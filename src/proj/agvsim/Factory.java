@@ -58,9 +58,9 @@ public class Factory {
 		}
 
 		remainQuota = new HashMap<>();
-		remainQuota.put("X", 10000);
-		remainQuota.put("Y", 10000);
-		remainQuota.put("Z", 10000);
+		remainQuota.put("X", 100);
+		remainQuota.put("Y", 100);
+		remainQuota.put("Z", 100);
 		output = new HashMap<>();
 		output.put("X", 0);
 		output.put("Y", 0);
@@ -68,23 +68,10 @@ public class Factory {
 
 	}
 
-	// 미구현
-	public Factory(String factoryName, String filePath) {
-
-	}
-
-	public String getFactoryName() {
-		return factoryName;
-	}
 
 	public Location getInvLoc() {
 		return inventory;
 	}
-
-	public Location getStoLoc() {
-		return storage;
-	}
-
 
 	public int getRemainQuota(String partType) {
 		int result = 0;
@@ -97,15 +84,6 @@ public class Factory {
 		return result;
 	}
 
-	public void setRemainQuota(String partType, int remain) {
-		if (remainQuota.containsKey(partType)) {
-			remainQuota.put(partType, remain);
-		}
-		else {
-			throw new IllegalArgumentException("No part with partType: " + partType);
-		}
-	}
-
 	public int getNumPorts() {
 		return numPorts;
 	}
@@ -116,16 +94,6 @@ public class Factory {
 
 	public AGV[] getAGVs() {
 		return AGVs;
-	}
-
-	public Port getPort(String portID) {
-		Port result = null;
-		for (Port port : ports) {
-			if (port.getPortID() == portID) {
-				result = port;
-			}
-		}
-		return result;
 	}
 
 	public Port getPort(int index) {
@@ -144,10 +112,6 @@ public class Factory {
 
 	public Part getPart(int index) {
 		return parts.get(index);
-	}
-
-	public void assignJob(Event job, int agvIndex) {
-		AGVs[agvIndex].setCurrentJob(job);
 	}
 
 	public void loadUpAGV(Part part, AGV agv) {
@@ -265,15 +229,4 @@ public class Factory {
 		System.out.println();
 	}
 
-	public void generateParts(int time) {
-		generatedParts += time;
-		if (generatedParts >= 5) {
-			generatedParts -= 5;
-			for (int i = 0; i < 5; i++) {
-				// Part 객체를 생성할 때 필요한 partID와 빈 locations 리스트를 전달
-				Part part = new Part(String.valueOf(partID++), new ArrayList<>());
-				inputPort.addPart(part);
-			}
-		}
-	}
 }
