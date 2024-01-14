@@ -4,7 +4,8 @@
 ### 🗂️ 시나리오 제안
 시나리오 구성
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/de78f5d8-b226-4397-9b2b-8fc3b82a230a/afd6ac51-4145-44ad-9fa8-f625476d47e1/Untitled.png)
+![image](https://github.com/g2Min/optimal_route/assets/96400257/4cbf2981-26ed-46e2-9a34-3a0e8b0ccb34)
+
 
 - 충돌을 고려하지 않아도 되므로
     - 1)  AGV는 모두 (0, 0) 한점에서 출발
