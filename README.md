@@ -1,6 +1,15 @@
 ## 개별연구
 ### Deep Reinforcement Learning for Load-Balancing Aware Network Control in IoT Engine System
 
+### 🗂️ 시나리오 제안
+
+![image](https://github.com/g2Min/optimal_route/assets/96400257/4cbf2981-26ed-46e2-9a34-3a0e8b0ccb34)
+
+
+- 충돌을 고려하지 않아도 되므로
+    - AGV는 모두 (0, 0) 한점에서 출발
+    - map 자체는 모델 구조로만 파악
+
 ### ✍️ 시나리오 구상
 - 작업장 구성
     - 작업장(맵)은 (0, 0)부터 (6, 6)까지 좌표로 구성되어 있으며, AGV는 0.5분당 x 또는 y 방향으로 1 또는 -1만큼 움직인다.
