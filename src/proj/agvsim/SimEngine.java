@@ -43,7 +43,7 @@ public class SimEngine {
 			}
 		}
 
-		while (currentTime <= endTime) {
+		while (factory.isThereRemainQuotaSum() && currentTime <= endTime) {
 			// port마다 단위 시간 만큼 작동함
 			factory.operatePorts(unitTime);
 
