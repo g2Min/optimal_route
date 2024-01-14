@@ -21,12 +21,12 @@ public class Factory {
 	private int generatedParts = 0;
 	private int partID = 0;
 	private Port inputPort;
-	
+
 	public Factory(String factoryName) {
 		this.factoryName = factoryName;
 		this.inventory = new Location("I", 0, 0);
 		this.storage = new Location("S", 0, 6);
-		
+
 		ports = new ArrayList<Port>();
 		Location A = new Location("A", 4, 1);
 		Location B = new Location("B", 6, 1);
@@ -39,7 +39,7 @@ public class Factory {
 		ports.add(new Port("D", "asembly", 180, D));
 		ports.add(new Port("E", "asembly", 600, E));
 		numPorts = 5;
-		
+
 		List<Location> path;
 		parts = new ArrayList<Part>();
 		path = new ArrayList<>(Arrays.asList(inventory, A, D, storage));
@@ -49,14 +49,14 @@ public class Factory {
 		path = new ArrayList<>(Arrays.asList(inventory, B, C, E, storage));
 		parts.add(new Part("Z", path));
 		numParts = 3;
-		
-        AGVs = new AGV[3];
-        numAGVs = 3;
-        int AGVSpeed = 2;
-        for (int i = 0; i < numAGVs; i++) {
-        	AGVs[i] = new AGV("AGV" + Integer.toString(i + 1), AGVSpeed, i + 1);
-        }
-		
+
+		AGVs = new AGV[3];
+		numAGVs = 3;
+		int AGVSpeed = 2;
+		for (int i = 0; i < numAGVs; i++) {
+			AGVs[i] = new AGV("AGV" + Integer.toString(i + 1), AGVSpeed, i + 1);
+		}
+
 		remainQuota = new HashMap<>();
 		remainQuota.put("X", 10000);
 		remainQuota.put("Y", 10000);
@@ -67,10 +67,10 @@ public class Factory {
 		output.put("Z", 0);
 
 	}
-	
+
 	// 미구현
 	public Factory(String factoryName, String filePath) {
-		
+
 	}
 
 	public String getFactoryName() {
@@ -89,7 +89,7 @@ public class Factory {
 	public int getRemainQuota(String partType) {
 		int result = 0;
 		if (remainQuota.containsKey(partType)) {
-            result = remainQuota.get(partType);
+			result = remainQuota.get(partType);
 		}
 		else {
 			throw new IllegalArgumentException("No part with partType: " + partType);
@@ -99,7 +99,7 @@ public class Factory {
 
 	public void setRemainQuota(String partType, int remain) {
 		if (remainQuota.containsKey(partType)) {
-            remainQuota.put(partType, remain);
+			remainQuota.put(partType, remain);
 		}
 		else {
 			throw new IllegalArgumentException("No part with partType: " + partType);
@@ -117,7 +117,7 @@ public class Factory {
 	public AGV[] getAGVs() {
 		return AGVs;
 	}
-	
+
 	public Port getPort(String portID) {
 		Port result = null;
 		for (Port port : ports) {
@@ -127,11 +127,11 @@ public class Factory {
 		}
 		return result;
 	}
-	
+
 	public Port getPort(int index) {
 		return ports.get(index);
 	}
-	
+
 	public Part getPart(String partType) {
 		Part result = null;
 		for (Part part : parts) {
@@ -141,21 +141,21 @@ public class Factory {
 		}
 		return result;
 	}
-	
+
 	public Part getPart(int index) {
 		return parts.get(index);
 	}
-	
+
 	public void assignJob(Event job, int agvIndex) {
 		AGVs[agvIndex].setCurrentJob(job);
 	}
-	
+
 	public void loadUpAGV(Part part, AGV agv) {
 		String partType = part.getPartType();
 		int numParts = 0;
 		int capacity = agv.getCapacity();
-		
-		
+
+
 		// agv가 inventory에 있으면 quota 감소
 		if (agv.getCurrentLocation().isSame(inventory)) {
 			int remain = remainQuota.get(partType);
@@ -168,7 +168,7 @@ public class Factory {
 			agv.loadUpPart(part, numParts);
 			remainQuota.put(partType, remainQuota.get(partType) - numParts);
 		}
-		
+
 		// agv가 port에 있으면
 		else {
 			for (Port port : ports) {
@@ -200,7 +200,7 @@ public class Factory {
 
 		// agv가 storage에 있으면 output 증가
 		if (agv.getCurrentLocation().isSame(storage)) {
-		output.put(partType, output.get(partType) + numParts);
+			output.put(partType, output.get(partType) + numParts);
 		}
 
 		// agv가 port에 있으면
@@ -217,7 +217,7 @@ public class Factory {
 		}
 		return part;
 	}
-	
+
 	// agv가 가지고 있는 부품의 path에서 현재위치의 다음 목적지를 구한다.
 	public void rerouteAGV(AGV agv) {
 		Part holdingPart = agv.getHoldingPart();
@@ -235,7 +235,7 @@ public class Factory {
 				break;
 			}
 		}
-		
+
 	}
 
 	public void operatePorts(int time) {

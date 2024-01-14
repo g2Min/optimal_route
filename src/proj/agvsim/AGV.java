@@ -10,7 +10,7 @@ public class AGV {
 	private Location currentLoc;	// AGV의 현재 위치
 	private Location dest = null;
 	private Event currentJob = null;
-	
+
 	public AGV(String name, int speed, int capacity) {
 		this.name = name;
 		this.speed = speed;
@@ -29,7 +29,7 @@ public class AGV {
 		this.currentLoc = location;
 		this.dest = new Location(0, 0);
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -61,7 +61,7 @@ public class AGV {
 	public void setAvailable(boolean available) {
 		this.available = available;
 	}
-	
+
 	public Part getHoldingPart() {
 		return holdingPart;
 	}
@@ -108,7 +108,7 @@ public class AGV {
 		if (currentLoc.isSame(dest)) return true;
 		else return false;
 	}
-	
+
 	// 동일한 부품만 실을 수 있다고 가정
 	public void loadUpPart(Part part, int numParts) {
 		holdingPart = part;
@@ -123,7 +123,7 @@ public class AGV {
 		}
 		return result;
 	}
-	
+
 	public Event getCurrentJob() {
 		return currentJob;
 	}
@@ -131,13 +131,13 @@ public class AGV {
 	public void setCurrentJob(Event job) {
 		currentJob = job;
 	}
-	
+
 	public void print() {
 		System.out.print("\t" + name);
 		if (holdingPart != null) {
 			System.out.print("(" + holdingPart.getPartType() + ", " + numHoldingParts + ")");
 		}
 		System.out.print(currentLoc.toString());
-		
+
 	}
 }

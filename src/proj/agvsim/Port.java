@@ -28,7 +28,7 @@ public class Port {
 		inputQueue = new ArrayDeque<>(this.maxQueueSize);
 		outputQueue = new ArrayDeque<>(this.maxQueueSize);
 	}
-	
+
 	public Port(String portID, String portType, int processingTime, int queueSize, Location location) {
 		this.portID = portID;
 		this.portType = portType;
@@ -52,23 +52,23 @@ public class Port {
 	public void setPortID(String portID) {
 		this.portID = portID;
 	}
-	
+
 	public String getPortType() {
 		return portType;
 	}
-	
+
 	public void setPortType(String portType) {
 		this.portType = portType;
 	}
-	
+
 	public int getProcessingTime() {
 		return processingTime;
 	}
-	
+
 	public void setProcessingTime(int processingTime) {
 		this.processingTime = processingTime;
 	}
-	
+
 	public Location getLocation() {
 		return location;
 	}
@@ -80,23 +80,23 @@ public class Port {
 	public int getInputQueueSize() {
 		return inputQueue.size();
 	}
-	
+
 	public int getOutputQueueSize() {
 		return outputQueue.size();
 	}
-	
+
 	public Part peekOutputQueue() {
 		return outputQueue.peek();
 	}
-	
+
 	public Part pollOutputQueue() {
 		return outputQueue.poll();
 	}
-	
+
 	public int getMaxQueueSize() {
 		return maxQueueSize;
 	}
-	
+
 	public boolean isAvailable() {
 		return available;
 	}
@@ -113,7 +113,7 @@ public class Port {
 			currentPart = nextPart;
 		}
 	}
-	
+
 	public void completeProcess() {
 		if (currentPart != null && remainTime == 0) {
 			outputQueue.add(currentPart);
@@ -121,7 +121,7 @@ public class Port {
 			currentPart = null;
 		}
 	}
-	
+
 	// 입력받은 시간만큼 작업하고 남은 시간 반환
 	public int spendTime(int time) {
 		if (remainTime > 0) {
@@ -134,7 +134,7 @@ public class Port {
 		}
 		return 0;
 	}
-	
+
 	public void print() {
 		System.out.print("\t" + portID);
 		System.out.print("(" + remainTime + ")");

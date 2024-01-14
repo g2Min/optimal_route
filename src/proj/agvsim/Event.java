@@ -12,7 +12,7 @@ public class Event {
         this.destination = destination;
         this.partType = partName;
     }
-    
+
     public Event(Location source, Location destination, String partName) {
         this.source = source;
         this.destination = destination;
@@ -24,30 +24,30 @@ public class Event {
     }
 
     public void setPriority(int priority) {
-    	this.priority = priority;
+        this.priority = priority;
     }
-    
+
     public Location getSource() {
         return source;
     }
 
     public void setSource(Location source) {
-    	this.source = source;
+        this.source = source;
     }
-    
+
     public Location getDestination() {
         return destination;
     }
-    
+
     public void setDestination(Location destination) {
-    	this.destination = destination;
+        this.destination = destination;
     }
-    
+
     public String getPartType() {
-    	return partType;
+        return partType;
     }
-    
+
     public void setPartName(String partName) {
-    	this.partType = partName;
+        this.partType = partName;
     }
 }
