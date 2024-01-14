@@ -2,7 +2,6 @@
 ### Deep Reinforcement Learning for Load-Balancing Aware Network Control in IoT Engine System
 
 ### 🗂️ 시나리오 제안
-시나리오 구성
 
 ![image](https://github.com/g2Min/optimal_route/assets/96400257/4cbf2981-26ed-46e2-9a34-3a0e8b0ccb34)
 
