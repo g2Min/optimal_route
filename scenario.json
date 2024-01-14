@@ -1,0 +1,27 @@
+{
+    "workshop": {
+        "parts": [
+            { "partType": "X", "path": ["I", "A", "D", "S"], "quota" : 10000 },
+            { "partType": "Y", "path": ["I", "B", "C", "D", "S"], "quota" : 10000 },
+            { "partType": "Z", "path": ["I", "B", "C", "E", "S"], "quota" : 10000 }
+        ],
+        "AGVs": [
+            { "id": "AGV1", "capacity": 1, "speed": 2, "status": "available" },
+            { "id": "AGV2", "capacity": 2, "speed": 2, "status": "available" },
+            { "id": "AGV3", "capacity": 3, "speed": 2, "status": "available" }
+        ],
+        "inventory" : {
+            "id": "I", "location": [0, 0]
+        },
+        "storage" : {
+            "id": "S", "location": [0, 6]
+        },
+        "ports": [
+            { "id": "A", "location": [4, 1], "type": "processing", "processingTime": 5 },
+            { "id": "B", "location": [6, 1], "type": "processing", "processingTime": 5 },
+            { "id": "C", "location": [5, 3], "type": "painting", "processingTime": 2 },
+            { "id": "D", "location": [4, 5], "type": "assembly", "processingTime": 3 },
+            { "id": "E", "location": [6, 5], "type": "assembly", "processingTime": 10 }
+        ]
+    }   
+}
